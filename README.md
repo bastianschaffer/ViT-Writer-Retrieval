@@ -54,12 +54,12 @@ your-dataset-directory/
 ## Run Vlad Training and Evaluation
 
 ### Setup Arguments
-* for code simplicity, for now, arguments are not read from the command line but must be set inside the source of [main_vlad.py](main_vlad.py) manually
-#### Arguments to be changed:
-* `CHECKPOINT = "<your-checkpoint-path/checkpoint-devout-grass-739.pth>"`
-* `TRAIN_PATH = "<your-dataset-directory/train>"`
-* `VAL_PATH = "<your-dataset-directory/val>"`
-* any other "constants" as you wish, like `K_TRAIN_EVAL`, ... 
+* for code simplicity, for now, arguments are not read from the command line but must be set inside the source of [main_vlad.py](main_vlad.py) manually:
+
+    * `CHECKPOINT = "<your-checkpoint-path/checkpoint-devout-grass-739.pth>"`
+    * `TRAIN_PATH = "<your-dataset-directory/train>"`
+    * `VAL_PATH = "<your-dataset-directory/val>"`
+    * any other "constants" as you wish, like `K_TRAIN_EVAL`, ... 
 
 
 ### Run

@@ -1,13 +1,11 @@
+# Base code from: https://github.com/VChristlein/icdar24keynote
+
 from sklearn.cluster import MiniBatchKMeans
-from sklearn.preprocessing import normalize
 import scipy
-from sklearn.linear_model import Ridge
 from sklearn.decomposition import PCA
 from torchvision import transforms
 import torch.nn.functional as F
 from collections import defaultdict
-from itertools import islice
-from tqdm import tqdm
 from PIL import Image
 import numpy as np
 import cv2
