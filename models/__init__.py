@@ -1,2 +1,0 @@
-# Module is copy-pasted from AttMask (https://github.com/gkakogeorgiou/attmask), which copied mostly from iBOT and DINO (see at each file individually)
-from .vision_transformer import VisionTransformer, vit_tiny, vit_small, vit_base, vit_large

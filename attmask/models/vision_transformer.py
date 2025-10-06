@@ -203,15 +203,12 @@ class VisionTransformer(nn.Module):
     def prepare_tokens(self, x, mask=None):
         B, nc, w, h = x.shape
         # patch linear embedding
-        #print(f"x before patch embed: {x.shape}")
         x = self.patch_embed(x)
-        #print(f"x after patch embed: {x.shape}")
 
         # mask image modeling
         if mask is not None:
             x = self.mask_model(x, mask)
         x = x.flatten(2).transpose(1, 2)
-        #print(f"x after flatten and transpose: {x.shape}")
 
         # add the [CLS] token to the embed patch tokens
         cls_tokens = self.cls_token.expand(B, -1, -1)
@@ -229,14 +226,14 @@ class VisionTransformer(nn.Module):
             x = self.prepare_tokens(x, mask=mask)
         else:
             x = self.prepare_tokens(x)
-        
+
         for i, blk in enumerate(self.blocks):
             if i < len(self.blocks) - 1:
                 x, _ = blk(x)
             else:
                 # return attention of the last block
                 x, att = blk(x)
-        
+
         x = self.norm(x)
         if self.fc_norm is not None:
             x[:, 0] = self.fc_norm(x[:, 1:, :].mean(1))
@@ -285,9 +282,9 @@ def vit_tiny(patch_size=16, **kwargs):
         qkv_bias=True, **kwargs)
     return model
 
-def vit_small(patch_size=16, **kwargs):
+def vit_small(patch_size=16, in_chans=3, **kwargs):
     model = VisionTransformer(
-        patch_size=patch_size, embed_dim=384, depth=12, num_heads=6, mlp_ratio=4, in_chans=1,
+        patch_size=patch_size, embed_dim=384, depth=12, num_heads=6, mlp_ratio=4, in_chans=in_chans,
         qkv_bias=True, **kwargs)
     return model
 

@@ -1,0 +1,75 @@
+command:
+  - python3
+  - ${program}
+  - ${args}
+program: main_attmask.py
+method: bayes
+metric:
+  goal: minimize
+  name: loss
+parameters:
+  batch_size_per_gpu: 
+    value: 30
+  arch: 
+    value: vit_small
+  epochs: 
+    value: 20
+  lr:
+    distribution: uniform
+    min: 0.0001
+    max: 0.005
+  warmup_epochs:
+    values: [0, 1, 2, 3]
+  warmup_teacher_temp_epochs:
+    values: [0, 1, 2, 3]
+  warmup_teacher_temp:
+    distribution: uniform
+    min: 0.01
+    max: 0.07
+  warmup_teacher_patch_temp:
+    distribution: uniform
+    min: 0.01
+    max: 0.07
+  teacher_temp:
+    distribution: uniform
+    min: 0.01
+    max: 0.07
+  teacher_patch_temp:
+    distribution: uniform
+    min: 0.01
+    max: 0.07
+  pred_start_epoch:
+    value: 0
+  momentum_teacher:
+    distribution: uniform
+    min: 0.995
+    max: 0.99995
+  freeze_last_layer: 
+    value: 1
+  pred_shape: 
+    value: attmask_high
+  global_crops_number: 
+    value: 2
+  local_crops_number: 
+    value: 6
+  global_crops_scale: 
+    value: 0.4 1
+  local_crops_scale: 
+    value: 0.05 0.4
+  use_fp16:
+    value: False
+  out_dim: 
+    value: 384
+  norm_last_layer: 
+    value: False
+  num_workers: 
+    value: 1
+  data_path:
+    value: /home/woody/iwi5/iwi5266h/datasets/icdar17
+  output_dir:
+    value: /home/woody/iwi5/iwi5266h/training-output
+  shared_head:
+    value: True
+early_terminate:
+  type: hyperband
+  min_iter: 500

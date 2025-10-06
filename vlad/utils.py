@@ -1,5 +1,3 @@
-# copy-pasted from AttMask (https://github.com/gkakogeorgiou/attmask) but there might be slight adjustments
-
 # This source code is licensed under the license found in the
 # LICENSE file in the root directory of this source tree.
 
